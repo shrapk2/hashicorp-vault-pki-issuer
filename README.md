@@ -2,7 +2,7 @@
 
 Python script to issue certificates from a HashiCorp Vault-based Public Key Infrastructure.
 
-### Prerequisites
+## Prerequisites
 
 Using this script assumes you have the following in place:
 
@@ -11,9 +11,21 @@ Using this script assumes you have the following in place:
 3. Service account with proper permissions restrictions to only issue certificates
 4. Python3 installed on the executing system
 
-### Installing
+### Python Dependencies
 
-Simply `git clone` the Python executable and go crazy.  Or just download the `vault-pki-issuer.py` script, no clone required.
+- pyopenssl
+- argparse
+- requests
+- json
+- urllib3
+- os
+- socket
+- ssl
+- datetime
+
+## Installing
+
+Simply `git clone` the Python executable and go crazy. Or just download the `vault-pki-issuer.py` script, no clone required.
 
 ## Examples
 
@@ -31,7 +43,8 @@ usage: vault-pki-issuer.py [-h] [--cn CN] [--ttl TTL] [--san SAN]
                            [--chain_path CHAIN_PATH] [--url URL]
                            [--svcid SVCID] [--secret SECRET]
                            [--issuing_ca ISSUING_CA]
-                           [--issuing_role ISSUING_ROLE] [--debug] [--version]
+                           [--issuing_role ISSUING_ROLE] [--debug] [--combo]
+                           [--force] [--version]
 
 Generates client certificates against HashiCorp Vault-based PKI
 
@@ -60,6 +73,10 @@ optional arguments:
                         webservers-v1
   --debug, -d           Enable debugging. Writes output to console and
                         .results file
+  --combo               Simply generate the <cn_value>-combo.pem certificate.
+                        No other certificates will be created.
+  --force, -f           Skip certificate validation and directly issue the
+                        certificate.
   --version, -v         show program's version number and exit
 
 ## Current defaults without arguments:
