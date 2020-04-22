@@ -75,3 +75,4 @@ tags
 # End of https://www.gitignore.io/api/vim,linux,macos,ansible
 
 # Per Repository Defined Exclusions
+.local_*
