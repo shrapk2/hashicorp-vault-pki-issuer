@@ -309,7 +309,7 @@ def vault_pki_api_call(debug, url, issuing_ca, issuing_role, svcid, secret, cn, 
     certreq_chain = certreq_json["data"]["ca_chain"][0]
 
     if debug:
-        certreq_results_file = open(cert_path + cn + ".results", "w")
+        certreq_results_file = open(cert_path + "/" + cn + ".results", "w")
         certreq_results_file.write(certreq_json_tidy)
         certreq_results_file.close
         print(certreq_json_tidy)
@@ -322,10 +322,10 @@ def vault_pki_api_call(debug, url, issuing_ca, issuing_role, svcid, secret, cn, 
 
     # Write certificate data to files
     if combo:
-        certfile_combo = open(cert_path + "/" + cn + "-combo.pem", "w")
+        certfile_combo = open(combo_path + "/" + cn + "-combo.pem", "w")
         certfile_combo.write(certreq_combo)
         certfile_combo.close()
-        os.chmod(cert_path + "/" + cn + "-combo.pem", 0o600)
+        os.chmod(combo_path + "/" + cn + "-combo.pem", 0o600)
         exit()
     else:
         certfile_cert = open(cert_path + "/" + cn + ".pem", "w")
